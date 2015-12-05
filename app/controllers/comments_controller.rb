@@ -1,10 +1,17 @@
 class CommentsController < ApplicationController
   def show
+    @user_id = params[:user_id]
+    @post_id = params[:post_id]
     @comment = Comment.find(params[:id])
+    @user = User.find(@comment.user_id)
+    @post = Post.find(@comment.post_id)
+
   end
 
   def new
     @comment = Comment.new
+    @user_id = params[:user_id]
+    @post_id = params[:post_id]
   end
 
   def create
@@ -18,6 +25,8 @@ class CommentsController < ApplicationController
 
   def edit
     @comment = Comment.find(params[:id])
+    @user_id = params[:user_id]
+    @post_id = params[:post_id]
   end
 
   def update

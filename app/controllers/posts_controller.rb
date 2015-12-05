@@ -1,8 +1,11 @@
 class PostsController < ApplicationController
-
-
+  
   def show
+    # @comments = Comment.find(params[:user_id])
     @post = Post.find(params[:id])
+    @comments = @post.comments
+    @user = User.find(@post.user_id)
+
   end
 
   def new
@@ -21,22 +24,23 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @user_id = params[:user_id]
     @post = Post.find(params[:id])
   end
 
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to post_path
+      redirect_to user_path(@post.user_id)
     else 
       render :edit
     end
   end
 
   def destroy
-    post = Post.find(params[:id])
-    if post.destroy
-      redirect_to posts_path
+    @post = Post.find(params[:id])
+    if @post.destroy
+      redirect_to user_path(@post.user_id)
     else
       render :show
     end

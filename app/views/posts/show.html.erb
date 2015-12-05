@@ -1,2 +1,24 @@
-<%= @post.title %>
-<%= @post.body %>
+<h1><%= @post.title %></h1>
+<p><%= @post.body %></p>
+<br />
+
+
+<% @comments.each do |f| %>
+  <ul> 
+    <li> 
+      
+      <%= f.body %>
+      <br>
+      <%= link_to "See Comment", comment_path(f) %>
+      <hr>
+    </li>
+  </ul>
+<% end %> 
+
+<%= link_to "Create Comment", new_comment_path(user_id: @user.id, post_id: @post.id) %>
+
+<%= link_to "Edit post", edit_post_path(user_id: @user.id) %>
+<br />
+<%= link_to "Delete post", post_path(@post), method: :delete %>
+<br />
+<%= link_to 'User home', user_path(@post.user_id) %>

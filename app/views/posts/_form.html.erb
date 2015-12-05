@@ -1,3 +1,8 @@
+<% if @post.errors.any? %>
+  <h1>Errors</h1>
+  <%= @post.errors.values.join(',') %>
+<% end %>
+
 <%= form_for @post do |u| %>
   <%= u.label :title %>
   <%= u.text_field :title %>
