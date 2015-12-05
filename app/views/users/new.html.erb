@@ -1,9 +1,2 @@
 <h1>Add a User</h1>
-<% form_for @user do |u| %>
-  <%= u.label :name %>
-  <%= u.text_field :name %>
-
-  <%= u.submit %>
-<%end%>
-
-
+<%= render partial:'form' %>

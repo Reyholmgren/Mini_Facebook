@@ -2,11 +2,9 @@
 <% @users.each do |f| %>
   <ul> 
     <li> 
-      <%= f.name %>
+     <%= link_to f.name, user_path(f) %>
     </li>
   </ul>
 <% end %> 
 
 <%= button_to "New User", new_user_path, method: :get %>
-
-

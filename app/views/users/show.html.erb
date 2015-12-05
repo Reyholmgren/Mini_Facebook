@@ -1,2 +1,18 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= @user.name %></h1>
+<hr>
+<%= button_to "Edit User", edit_user_path, method: :get %>
+
+<br>
+
+
+<% @posts.each do |f| %>
+  <ul> 
+    <li> 
+      <%= f.title %>
+    </li>
+  </ul>
+<% end %> 
+
+
+<%= link_to "New post", new_post_path(user_id: @user.id) %>
+
